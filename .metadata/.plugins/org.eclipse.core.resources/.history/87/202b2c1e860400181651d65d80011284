@@ -88,7 +88,6 @@ public class ServiceRest {
 	
 	@POST
 	@Path("/retrievemaincontent")
-	//To get main content
 	public String retrieveMainContent(String body)
 	{
 		MongoClient mongo = new MongoClient("localhost", 27017);

@@ -88,7 +88,6 @@ public class ServiceRest {
 	
 	@POST
 	@Path("/retrievemaincontent")
-	//To get main content
 	public String retrieveMainContent(String body)
 	{
 		MongoClient mongo = new MongoClient("localhost", 27017);
@@ -99,7 +98,7 @@ public class ServiceRest {
 		//Pattern pattern = Pattern.compile(".*"+searchFor+"*" , Pattern.CASE_INSENSITIVE);
 		//searchQuery.put("skill",pattern);
 		//DBCursor cursor = table.find(searchQuery);
-		DBCursor cursor = table.find();
+		//DBCursor cursor = table.find();
 		JSON json = new JSON();
 		System.out.println(json.serialize(cursor));
 		return json.serialize(cursor);
