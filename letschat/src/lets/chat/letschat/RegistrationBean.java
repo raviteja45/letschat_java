@@ -24,4 +24,22 @@ public class RegistrationBean {
 
     public String userName;
     public String phoneNumber;
+    public String relations;
+    public String emailAddress;
+    
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	public String getRelations() {
+		return relations;
+	}
+
+	public void setRelations(String relations) {
+		this.relations = relations;
+	}
 }

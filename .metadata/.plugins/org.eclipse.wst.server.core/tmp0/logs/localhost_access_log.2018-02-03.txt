@@ -1,0 +1,16 @@
+127.0.0.1 - - [03/Feb/2018:21:29:47 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [03/Feb/2018:21:29:49 +0530] "GET /letschat/ HTTP/1.1" 404 969
+192.168.0.11 - - [03/Feb/2018:21:30:44 +0530] "POST /letschat/letschat/rest/retrievemaincontent HTTP/1.1" 200 1089
+192.168.0.11 - - [03/Feb/2018:21:33:44 +0530] "POST /letschat/letschat/rest/retrievemaincontent HTTP/1.1" 200 1089
+127.0.0.1 - - [03/Feb/2018:22:12:24 +0530] "GET / HTTP/1.1" 404 951
+192.168.0.19 - - [03/Feb/2018:22:20:40 +0530] "POST /letschat/letschat/rest/insertregistrationdetails HTTP/1.1" 200 18
+192.168.0.19 - - [03/Feb/2018:22:21:03 +0530] "GET /letschat/letschat/rest/insertregistrationdetails HTTP/1.1" 405 -
+192.168.0.19 - - [03/Feb/2018:22:25:23 +0530] "POST /letschat/letschat/rest/insertregistrationdetails HTTP/1.1" 200 18
+192.168.0.19 - - [03/Feb/2018:22:28:49 +0530] "POST /letschat/letschat/rest/insertregistrationdetails HTTP/1.1" 200 18
+127.0.0.1 - - [03/Feb/2018:22:43:17 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [03/Feb/2018:22:43:18 +0530] "GET /letschat/ HTTP/1.1" 404 969
+127.0.0.1 - - [03/Feb/2018:23:10:26 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [03/Feb/2018:23:11:44 +0530] "GET /letschat/ HTTP/1.1" 404 969
+192.168.0.11 - - [03/Feb/2018:23:17:17 +0530] "POST /letschat/letschat/rest/insertregistrationdetails HTTP/1.1" 200 18
+192.168.0.11 - - [03/Feb/2018:23:17:19 +0530] "POST /letschat/letschat/rest/retrievemaincontent HTTP/1.1" 200 1660
+192.168.0.11 - - [03/Feb/2018:23:18:25 +0530] "POST /letschat/letschat/rest/retrievemaincontent HTTP/1.1" 200 1660

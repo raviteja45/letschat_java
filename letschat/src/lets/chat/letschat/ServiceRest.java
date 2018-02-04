@@ -19,6 +19,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
+import com.mongodb.client.model.Projections;
 import com.mongodb.util.JSON;
 
 @Path("/rest/")
@@ -103,6 +104,41 @@ public class ServiceRest {
 		JSON json = new JSON();
 		System.out.println(json.serialize(cursor));
 		return json.serialize(cursor);
+	}
+	
+	@POST
+	@Path("/updaterelations")
+	//To get main content
+	public String updateRelations(String body)
+	{
+		MongoClient mongo = new MongoClient("localhost", 27017);
+		DB db = mongo.getDB("letschatDb");
+		DBCollection table = db.getCollection("userdetails");
+		ObjectMapper mapper = new ObjectMapper();
+		RegistrationBean bean=null;
+		try {
+			bean = mapper.readValue(body, RegistrationBean.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	        
+		BasicDBObject search = new BasicDBObject();
+		search.put("phoneNumber", bean.getPhoneNumber());
+		BasicDBObject column = new BasicDBObject();
+		column.put("relations", 1);
+		DBCursor cursor = table.find(search,column);
+		String current = null;
+		while(cursor.hasNext()) {
+			 current = cursor.next().get("relations").toString();
+		}
+		if(current!=null){
+			BasicDBObject docUpdate = new BasicDBObject();
+			docUpdate.append("$set", new BasicDBObject().append("relations", current+","+bean.getRelations()));
+			WriteResult result = table.update(search, docUpdate);
+		}
+		
+
+		return "";
 	}
 	
 	@POST
