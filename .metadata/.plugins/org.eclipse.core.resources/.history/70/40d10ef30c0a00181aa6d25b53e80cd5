@@ -2,8 +2,6 @@ package lets.chat.letschat;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.ws.rs.Consumes;
@@ -94,52 +92,18 @@ public class ServiceRest {
 	//To get main content
 	public String retrieveMainContent(String body)
 	{
-		List<String> response = new ArrayList<String>();
 		MongoClient mongo = new MongoClient("localhost", 27017);
 		DB db = mongo.getDB("letschatDb");
 		DBCollection table = db.getCollection("userdetails");
+		BasicDBObject searchQuery = new BasicDBObject();
+		//Pattern pattern = Pattern.compile(".*"+searchFor+"*" , Pattern.CASE_INSENSITIVE);
+		//Pattern pattern = Pattern.compile(".*"+searchFor+"*" , Pattern.CASE_INSENSITIVE);
+		//searchQuery.put("skill",pattern);
+		//DBCursor cursor = table.find(searchQuery);
 		DBCursor cursor = table.find();
-		
-		BasicDBObject search = new BasicDBObject();
-		search.put("phoneNumber", body);
-		BasicDBObject column = new BasicDBObject();
-		column.put("relations", 1);
-		DBCursor cursor1 = table.find(search,column);
-		String current = null;
-		while(cursor1.hasNext()) {
-			 current = cursor1.next().get("relations").toString();
-		}
 		JSON json = new JSON();
-		response.add(json.serialize(cursor));
-		if(current!=null){
-			response.add(current);	
-		}
 		System.out.println(json.serialize(cursor));
 		return json.serialize(cursor);
-	}
-	
-	@POST
-	@Path("/retrievecurrentrelation")
-	//To get main content
-	public String retrieveCurrentRelation(String body)
-	{
-		MongoClient mongo = new MongoClient("localhost", 27017);
-		DB db = mongo.getDB("letschatDb");
-		DBCollection table = db.getCollection("userdetails");
-		DBCursor cursor = table.find();
-		
-		BasicDBObject search = new BasicDBObject();
-		search.put("phoneNumber", body);
-		BasicDBObject column = new BasicDBObject();
-		column.put("relations", 1);
-		DBCursor cursor1 = table.find(search,column);
-		String current = null;
-		while(cursor1.hasNext()) {
-			 current = cursor1.next().get("relations").toString();
-		}
-		JSON json = new JSON();
-		System.out.println(current);
-		return current;
 	}
 	
 	@POST

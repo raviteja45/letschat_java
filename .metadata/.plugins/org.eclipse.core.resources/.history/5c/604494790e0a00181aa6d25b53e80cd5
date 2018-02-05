@@ -119,30 +119,6 @@ public class ServiceRest {
 	}
 	
 	@POST
-	@Path("/retrievecurrentrelation")
-	//To get main content
-	public String retrieveCurrentRelation(String body)
-	{
-		MongoClient mongo = new MongoClient("localhost", 27017);
-		DB db = mongo.getDB("letschatDb");
-		DBCollection table = db.getCollection("userdetails");
-		DBCursor cursor = table.find();
-		
-		BasicDBObject search = new BasicDBObject();
-		search.put("phoneNumber", body);
-		BasicDBObject column = new BasicDBObject();
-		column.put("relations", 1);
-		DBCursor cursor1 = table.find(search,column);
-		String current = null;
-		while(cursor1.hasNext()) {
-			 current = cursor1.next().get("relations").toString();
-		}
-		JSON json = new JSON();
-		System.out.println(current);
-		return current;
-	}
-	
-	@POST
 	@Path("/updaterelations")
 	//To get main content
 	public String updateRelations(String body)
